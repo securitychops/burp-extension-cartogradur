@@ -89,7 +89,7 @@ public class BurpExtender implements IBurpExtender, IScannerCheck
         	}    		
     		
     		final String google_maps_geocode_url = "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=";
-	    	final Pattern google_maps_api_pattern = Pattern.compile("AIzaSy.*?(&|;| |\\r\\n|\\n|\\r|\"|')");
+	    	final Pattern google_maps_api_pattern = Pattern.compile("AIza[0-9A-Za-z-_]{35}");
 	    	
 	    	Matcher google_maps_api_keys = google_maps_api_pattern.matcher(body);
 	    	
@@ -98,12 +98,9 @@ public class BurpExtender implements IBurpExtender, IScannerCheck
 	    	{
 	    		String tmp_matched_key = google_maps_api_keys.group();
 	    		
-	    		// pretty sketchy, but gets the job done
-	    		String final_matched_key = tmp_matched_key.trim().replace("&", "").replace(";", "").replace("\"", "").replace("'", "");
-	    		
-	    		if(!unique_api_keys.contains(final_matched_key))
+	    		if(!unique_api_keys.contains(tmp_matched_key))
 	    		{
-	    			unique_api_keys.add(final_matched_key);
+	    			unique_api_keys.add(tmp_matched_key);
 	    		}
 	    	}
 	    	
