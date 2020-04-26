@@ -20,6 +20,7 @@ I caution you right now, some people will not consider this a real issue while o
 
 1. Git clone it locally to some dir
 2. cd into that some dir
+
 3-linux. Run the following bash one liner: 
 ```
 javac -d build src/burp/*.java && \
@@ -29,6 +30,7 @@ mv cartogradur.jar ../ && \
 cd ../ && \
 rm -rf build
 ```
+
 3.-windows. Run the following
 ```
 javac -target 8 -source 8 -d build src/burp/*.java
