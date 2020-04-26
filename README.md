@@ -20,7 +20,7 @@ I caution you right now, some people will not consider this a real issue while o
 
 1. Git clone it locally to some dir
 2. cd into that some dir
-3. Run the following bash one liner: 
+3-linux. Run the following bash one liner: 
 ```
 javac -d build src/burp/*.java && \
 cd build && \
@@ -28,6 +28,15 @@ jar cvf cartogradur.jar burp/*.class && \
 mv cartogradur.jar ../ && \
 cd ../ && \
 rm -rf build
+```
+3.-windows. Run the following
+```
+javac -target 8 -source 8 -d build src/burp/*.java
+cd build
+jar cvf cartogradur.jar burp/*.class
+mv cartogradur.jar ../
+cd ../
+rm  build
 ```
 4. Add the newly built `cartogradur.jar` file to your Burp extensions
 5. ???
